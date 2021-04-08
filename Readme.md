@@ -54,3 +54,6 @@ package of the main class, which includes all of the sub packages. If a class
 is outside of the main class package tree, then you must declare the packages
 to scan. If you declare @ComponentScan, then you have to specify the default
 package in it as well, otherwise the default behavior simply gets overwritten.
+
+@Configuration classes are used usually when you are using a third party library,
+code that you don't own. 
