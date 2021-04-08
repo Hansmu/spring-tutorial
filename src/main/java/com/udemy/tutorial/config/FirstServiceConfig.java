@@ -1,8 +1,10 @@
 package com.udemy.tutorial.config;
 
 import com.udemy.tutorial.services.ManualService;
+import com.udemy.tutorial.services.SecondService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class FirstServiceConfig {
@@ -12,5 +14,13 @@ public class FirstServiceConfig {
     @Bean
     public ManualService manualService() {
         return new ManualService();
+    }
+
+    // Can declare @Primary on either the class or when constructing the bean.
+    @Primary
+//    @Profile({"EN"}) /* Can also specify the profile on the constructor method */
+    @Bean("secondService") // You can override the default name that it'd give the bean via the method name, by using a property on the bean annotation.
+    public SecondService secondService() {
+        return new SecondService();
     }
 }
