@@ -38,3 +38,19 @@ communication. Mostly not used by the developers using Spring. Only for niche
 use cases. Some examples:
 
 ![diagram](aware-interfaces.JPG)
+
+Spring stereotypes are class level annotations used to define Spring Beans.
+When classes annotated with it are detected via the component scan, an
+instance of the class will be added to the Spring context. These are - 
+@Component, @Controller, @RestController, @Repository, @Service.
+
+In some cases you can omit the annotation and they are still picked up, because
+the extended interface already has it. E.g. @Repository.
+
+![diagram](annotation-hierarchy.JPG)
+
+Spring Boot's auto configuration will tell Spring to perform a component scan of the
+package of the main class, which includes all of the sub packages. If a class
+is outside of the main class package tree, then you must declare the packages
+to scan. If you declare @ComponentScan, then you have to specify the default
+package in it as well, otherwise the default behavior simply gets overwritten.
