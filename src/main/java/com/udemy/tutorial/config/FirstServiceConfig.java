@@ -20,7 +20,8 @@ public class FirstServiceConfig {
     @Primary
 //    @Profile({"EN"}) /* Can also specify the profile on the constructor method */
     @Bean("secondService") // You can override the default name that it'd give the bean via the method name, by using a property on the bean annotation.
-    public SecondService secondService() {
-        return new SecondService();
+    public SecondService secondService(ManualService manualService) { // In order to do dependency injection, you can take the required beans
+        // in as parameters, and the available beans to Spring will be added.
+        return new SecondService(manualService);
     }
 }
