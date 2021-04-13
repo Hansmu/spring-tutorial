@@ -2,12 +2,30 @@ package com.udemy.tutorial.config;
 
 import com.udemy.tutorial.services.ManualService;
 import com.udemy.tutorial.services.SecondService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.PropertySource;
 
+@PropertySource("classpath:some-custom-properties-file.properties") // Define a separate property file to check. Have to be loaded up into the context for use.
 @Configuration
 public class FirstServiceConfig {
+
+    @Bean
+    public PropertyInjectionExample propertyInjectionExample(
+            @Value("${doggoMarker.username}") String username,
+            @Value("${doggoMarker.password}") String password,
+            @Value("${doggoMarker.jdbcUrl}") String jdbcUrl
+    ) {
+        PropertyInjectionExample propertyInjectionExample = new PropertyInjectionExample();
+
+        propertyInjectionExample.setUsername(username);
+        propertyInjectionExample.setPassword(password);
+        propertyInjectionExample.setJdbcUrl(jdbcUrl);
+
+        return propertyInjectionExample;
+    }
 
     // By default, the name that Spring gives the bean is the name of the method that you are using. So in this example
     // It'd name it manualService as that is the name of the method.

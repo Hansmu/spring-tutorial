@@ -1,5 +1,6 @@
 package com.udemy.tutorial;
 
+import com.udemy.tutorial.config.PropertyInjectionExample;
 import com.udemy.tutorial.services.FirstService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,6 +19,9 @@ public class TutorialApplication {
 
 		FirstService firstService = run.getBean("firstService", FirstService.class);
 		System.out.println(firstService.getHello());
+
+		PropertyInjectionExample propertyInjectionExample = run.getBean("propertyInjectionExample", PropertyInjectionExample.class);
+		System.out.println(propertyInjectionExample.getUsername());
 	}
 
 }
