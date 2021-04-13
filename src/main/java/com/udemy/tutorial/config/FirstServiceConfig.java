@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 
+// PropertySource is not needed if you're using spring boot. You can utilize application.properties, which is the default from which
+// Spring boot searches for its properties.
 @PropertySource("classpath:some-custom-properties-file.properties") // Define a separate property file to check. Have to be loaded up into the context for use.
 @Configuration
 public class FirstServiceConfig {
@@ -16,7 +18,24 @@ public class FirstServiceConfig {
     public PropertyInjectionExample propertyInjectionExample(
             @Value("${doggoMarker.username}") String username,
             @Value("${doggoMarker.password}") String password,
-            @Value("${doggoMarker.jdbcUrl}") String jdbcUrl
+            @Value("${doggoMarker.jdbcUrl}") String jdbcUrl,
+            @Value("${someValue.initialValue}") String someInitialValue
+    ) {
+        System.out.println("SOME INITIAL VALUE BEING PRINTED HERE: " + someInitialValue);
+        PropertyInjectionExample propertyInjectionExample = new PropertyInjectionExample();
+
+        propertyInjectionExample.setUsername(username);
+        propertyInjectionExample.setPassword(password);
+        propertyInjectionExample.setJdbcUrl(jdbcUrl);
+
+        return propertyInjectionExample;
+    }
+
+    @Bean
+    public PropertyInjectionExample propertyInjectionExampleBoot(
+            @Value("${commonCustomProperties.doggoMarker.username}") String username,
+            @Value("${commonCustomProperties.doggoMarker.password}") String password,
+            @Value("${commonCustomProperties.doggoMarker.jdbcUrl}") String jdbcUrl
     ) {
         PropertyInjectionExample propertyInjectionExample = new PropertyInjectionExample();
 

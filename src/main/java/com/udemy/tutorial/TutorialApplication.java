@@ -22,6 +22,9 @@ public class TutorialApplication {
 
 		PropertyInjectionExample propertyInjectionExample = run.getBean("propertyInjectionExample", PropertyInjectionExample.class);
 		System.out.println(propertyInjectionExample.getUsername());
+
+		PropertyInjectionExample propertyInjectionExampleBoot = run.getBean("propertyInjectionExampleBoot", PropertyInjectionExample.class);
+		System.out.println(propertyInjectionExampleBoot.getUsername());
 	}
 
 }

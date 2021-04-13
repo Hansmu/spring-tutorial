@@ -57,3 +57,7 @@ package in it as well, otherwise the default behavior simply gets overwritten.
 
 @Configuration classes are used usually when you are using a third party library,
 code that you don't own. 
+
+If you're using Spring Boot, then `@PropertySource` is not needed for property
+injection, as Spring will look from the property inside of `application.properties`
+by default.
