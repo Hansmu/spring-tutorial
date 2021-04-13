@@ -1,5 +1,6 @@
 package com.udemy.tutorial;
 
+import com.udemy.tutorial.config.PropertyInjectionConstructorBindingExample;
 import com.udemy.tutorial.config.PropertyInjectionExample;
 import com.udemy.tutorial.config.PropertyInjectionExampleBinding;
 import com.udemy.tutorial.services.FirstService;
@@ -29,6 +30,9 @@ public class TutorialApplication {
 
 		PropertyInjectionExampleBinding propertyInjectionExampleBinding = run.getBean(PropertyInjectionExampleBinding.class);
 		System.out.println(propertyInjectionExampleBinding.getUsername());
+
+		PropertyInjectionConstructorBindingExample propertyInjectionConstructorBindingExample = run.getBean(PropertyInjectionConstructorBindingExample.class);
+		System.out.println(propertyInjectionConstructorBindingExample.getUsername());
 	}
 
 }

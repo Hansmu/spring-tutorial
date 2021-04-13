@@ -3,6 +3,7 @@ package com.udemy.tutorial.config;
 import com.udemy.tutorial.services.ManualService;
 import com.udemy.tutorial.services.SecondService;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.PropertySource;
 // Spring boot searches for its properties.
 @PropertySource("classpath:some-custom-properties-file.properties") // Define a separate property file to check. Have to be loaded up into the context for use.
 @Configuration
+@EnableConfigurationProperties(PropertyInjectionConstructorBindingExample.class)
 public class FirstServiceConfig {
 
     @Bean
