@@ -6,13 +6,14 @@ import com.udemy.tutorial.config.PropertyInjectionExampleBinding;
 import com.udemy.tutorial.services.FirstService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 // When defining component scan, then you have to declare the default base package as well. It overrides the default behavior, so in
 // order to keep the default, you have to specify it additionally.
-@ComponentScan(basePackages = {"com.udemy.something", "com.udemy.tutorial"})
+@ComponentScan(basePackages = {"com.udemy.something", "com.udemy.tutorial", "com.udemy.recipeApp"})
+@EntityScan("com.udemy.recipeApp")
 @SpringBootApplication
 public class TutorialApplication {
 
